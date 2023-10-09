@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>eu.krylov.jersey.examples</groupId>
+    <version>0.1-SNAPSHOT</version>
+
+    <artifactId>appath-example</artifactId>
+    <packaging>war</packaging>
+    <name>appath-example</name>
+
+    <description>appath-example</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>2.40</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.inject</groupId>
+            <artifactId>jersey-hk2</artifactId>
+            <version>2.40</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.microprofile.openapi</groupId>
+            <artifactId>microprofile-openapi-api</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>smallrye-open-api-maven-plugin</artifactId>
+                <groupId>io.smallrye</groupId>
+                <version>3.6.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>io.smallrye.config</groupId>
+                        <artifactId>smallrye-config</artifactId>
+                        <version>2.13.3</version> <!-- last JDK 1.8 compatible -->
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jboss.logging</groupId>
+                        <artifactId>jboss-logging</artifactId>
+                        <version>3.4.3.Final</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate-schema</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <includeDependenciesScopes>compile,provided,system,test,import</includeDependenciesScopes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+    </properties>
+</project>
